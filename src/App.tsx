@@ -1,7 +1,6 @@
 import React from 'react';
 import Table from './components/Table/Table';
 import peopleData from './random-people-data.json'
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
