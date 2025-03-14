@@ -13,4 +13,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Click individual names for more information (via Modal)
 - Pagination
 - Ability to sort Data in alphabetical order
-- Abilility to select how many rows to display per page
+- Ability to select how many rows to display per page
