@@ -6,6 +6,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <h1> Conduktor Random People Data</h1>
       <Table data={peopleData.ctRoot}/>
       
     </div>

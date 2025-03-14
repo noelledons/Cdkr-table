@@ -16,21 +16,18 @@ interface TableProps {
 }
 
 const DEFAULT_PAGE = 1;
-const DEAFULT_PAGE_SIZE = 10;
+const DEFAULT_PAGE_SIZE = 10;
 const PAGE_SIZE_OPTIONS = [5, 10, 20, 50];
 
 const Table = ({ data }: TableProps) => {
   const [currentPage, setCurrentPage] = useState(DEFAULT_PAGE);
   const [selectedPerson, setSelectedPerson] = useState<any | null>(null);
-  const [recordsPerPage, setRecordsPerPage] = useState(DEAFULT_PAGE_SIZE);
+  const [recordsPerPage, setRecordsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   const totalPages = Math.ceil(data.length / recordsPerPage);
 
-  const startIndex = (currentPage - 1) * recordsPerPage;
-  const paginatedData = data.slice(startIndex, startIndex + recordsPerPage);
-
-  const dataInLetterOrder = data.sort((a, b) => {
+  const sortedData = [...data].sort((a, b) => {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();
 
@@ -40,6 +37,9 @@ const Table = ({ data }: TableProps) => {
       return nameA > nameB ? -1 : nameA < nameB ? 1 : 0;
     }
   });
+
+  const startIndex = (currentPage - 1) * recordsPerPage;
+  const paginatedData = sortedData.slice(startIndex, startIndex + recordsPerPage);
 
   const handleSort = () => {
     setSortOrder((prevSortOrder) => (prevSortOrder === "asc" ? "desc" : "asc"));
@@ -51,7 +51,7 @@ const Table = ({ data }: TableProps) => {
         <thead>
           <tr>
           <th>
-              <button onClick={handleSort} className="name-sort">
+              <button onClick={handleSort} className="name-sort" aria-sort={sortOrder === "asc" ? "ascending" : "descending"}>
                 Name {sortOrder === "asc" ? "↑" : "↓"}
               </button>
             </th>
@@ -108,7 +108,6 @@ const Table = ({ data }: TableProps) => {
           <button
             disabled={startIndex + recordsPerPage >= data.length}
             onClick={() => setCurrentPage((p) => p + 1)}
-            className=""
           >
             Next
           </button>
