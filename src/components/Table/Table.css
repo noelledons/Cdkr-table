@@ -1,0 +1,50 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .people-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .table th {
+    background: #f4f4f4;
+  }
+  
+  .clickable {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .clickable:hover {
+    text-decoration: none;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .name-sort {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    outline: none;
+  }
+  
+  .name-sort:hover {
+    text-decoration: underline; /* Optional: underline on hover for better UX */
+  }
+  
+  .name-sort:focus {
+    outline: none; /* Remove outline on focus */
+  }
